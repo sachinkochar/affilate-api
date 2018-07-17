@@ -1,61 +1,30 @@
 'use strict';
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose');
-var Product = require('../../model/productsModel');
-
-router.get('/', function (req, res, next) {
-    res.status(200).json({
-        message: 'Handling Get requests'
-    });
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 
-router.post('/', function (req, res, next) {
-    var products = {
-        name: req.body.name,
-        price: req.body.price
-    };
-    var product = new Product({
-        name: req.body.name,
-        price: req.body.price
-    });
-    product.save().then(function (result) {
-        console.log(result);
-    }).catch(function (err) {
-        console.log(err);
-    });
-    res.status(201).json({
-        message: 'Handling Post requests ',
-        createdProduct: product
-    });
-});
+var _express = require('express');
 
-router.get('/:productId', function (req, res, next) {
-    var id = req.params.productId;
-    if (id === 'special') {
-        res.status(200).json(_defineProperty({
-            message: 'product Id'
-        }, 'message', id));
-    } else {
-        res.status(200).json({
-            message: 'Not a special product'
-        });
-    }
-});
+var _express2 = _interopRequireDefault(_express);
 
-router.patch('/:productId', function (req, res, next) {
-    res.status(200).json({
-        message: 'Updated Product'
-    });
-});
+var _mongoose = require('mongoose');
 
-router.delete('/:productId', function (req, res, next) {
-    res.status(200).json({
-        message: 'Product Deleted'
-    });
-});
+var _mongoose2 = _interopRequireDefault(_mongoose);
 
-module.exports = router;
+var _productsModel = require('../../model/productsModel');
+
+var _productsModel2 = _interopRequireDefault(_productsModel);
+
+var _proiductController = require('../../controller/proiductController');
+
+var _proiductController2 = _interopRequireDefault(_proiductController);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var router = _express2.default.Router();
+
+router.route('/').get(_proiductController2.default.getProducts);
+router.route('/').post(_proiductController2.default.postProducts);
+
+exports.default = router;

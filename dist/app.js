@@ -20,9 +20,9 @@ var _mongoose = require('mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _contactForm = require('./api/routes/contactForm');
+var _routes = require('./api/routes');
 
-var _contactForm2 = _interopRequireDefault(_contactForm);
+var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43,21 +43,22 @@ _mongoose2.default.connect(uri, function (err) {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use((0, _cors2.default)());
-app.use('/api', _contactForm2.default);
+app.use('/api', _routes2.default);
 
 // app.use('/orders',ordersRoutes);
 // })
 
-// app.use((req, res, next)=>{
-//     const error= new Error('Not Found');
-//     error.status=404;
-//     next(error);
-// })
+app.use(function (req, res, next) {
+    var error = new Error('Not Found');
+    error.status = 404;
+    next(error);
+});
 
-// app.use((error, req, res, next)=>{
-//     res.status(error.status || 500);
-//     res.json({
-//         message: error.message
-// })
+app.use(function (error, req, res, next) {
+    res.status(error.status || 500);
+    res.json({
+        message: error.message
+    });
+});
 
 exports.default = app;
