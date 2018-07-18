@@ -1,5 +1,5 @@
 import express from 'express';
-import publisherController from '../controllers/publisherController';
+import buisnessController from '../controllers/buisnessController';
 
 // Creating router instance of express router
 const router = express.Router();
@@ -8,15 +8,14 @@ const router = express.Router();
 /*
  * Route to find data with search query
  */
-
-router.route('/publisher')
+router.route('/buisness')
    .get(
-    publisherController.getPublisher
+    buisnessController.getBuisness
    )
 
-router.route('/publisher/create')
+router.route('/buisness/create')
    .post(
-    publisherController.createPublisher
+    buisnessController.createBuisness
    )
 
 module.exports = router;

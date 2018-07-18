@@ -98,6 +98,10 @@ app.use('/api', Routes.userRoutes);
 // app.use('/api', Routes.accountSettingRoutes);
 app.use('/api', Routes.searchRoutes);
 // app.use('/api', Routes.publisherRoutes);
+app.use('/api', Routes.buisnessRoutes);
+// app.use('/api', Routes.buisnessRoutes);
+app.use('/api', Routes.publisherRoutes);
+// app.use('/api', Routes.publisher);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

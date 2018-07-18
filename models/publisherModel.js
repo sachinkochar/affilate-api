@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const publisherSchema = mongoose.Schema({
+    user_id:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
     title:  String,
     subject: String,
     credibility: String,

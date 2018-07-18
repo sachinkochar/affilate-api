@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose'
-import Publisher from '../models/publisherModel'
+import Buisness from '../models/buisnessModel'
 
 // var getResults = (req,res,next) => {
 //     const SearchItems = Search.find({}).then( (data) => {
@@ -18,12 +18,12 @@ import Publisher from '../models/publisherModel'
 // })
 // }
 
-var getPublisher = (req, res, next) => {
-    Publisher.find({})
+var getBuisness = (req, res, next) => {
+    Buisness.find({})
         .then( (data) =>{
             res.status(200).json({
                 data:data,
-                message:'All Publishers'
+                message:'All Buisness'
             })
     })
     .catch( (err)=>{
@@ -32,26 +32,31 @@ var getPublisher = (req, res, next) => {
             data:err
         })
     } )
-
 }
 
-var createPublisher = (req,res,next) => {
+var createBuisness = (req,res,next) => {
     console.log(req.form_data,'req body')
-    const new_publisher= {
+    const new_buisness= {
         user_id: req.body.user_id,
-        name : req.body.buis_name,
-        buis_type : req.body.buis_type,
-        buis_website : req.body.buis_website,
-        description : req.body.description,
+        title : req.body.title,
+        subject : req.body.subject,
+        credibility : req.body.credibiity,
+        user_trust : req.body.user_trust,
+        brand_value : req.body.brand_value,
+        price : req.body.price,
+        request_for : req.body.request_for,
+        expected_profit : req.body.expected_profit,
+        expected_sales : req.body.expected_sales,
+        tags : req.body.tags,
     }
 
-    const newPublisher = new Publisher(new_publisher);
-    newPublisher.save()
+    const newBuisness = new Buisness(new_buisness);
+    newBuisness.save()
     .then( (data)=>{
         console.log(data)
         res.status(200).json({
             message: 'New Buisness Added Successfully',
-            Title: new_publisher.name
+            Title: new_buisness.name
         })
     })
     .catch( (err) => {
@@ -83,8 +88,8 @@ var createPublisher = (req,res,next) => {
 // })
 // }
 
-var publishController={
-    createPublisher,getPublisher
+var buisnessController={
+    createBuisness,getBuisness
 }
 
-export default  publishController
+export default  buisnessController
