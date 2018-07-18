@@ -1,0 +1,47 @@
+{
+   "name": "Risorso",
+   "version": "1.0.0",
+   "main": "server.js",
+   "scripts": {
+      "start": "nodemon --exec babel-node server.js",
+      "test": "mocha  --compilers js:babel-core/register"
+   },
+   "dependencies": {
+      "aws-sdk": "^2.232.1",
+      "base64-img": "^1.0.4",
+      "bcryptjs": "^2.4.3",
+      "body-parser": "^1.18.2",
+      "compression": "^1.7.2",
+      "connect-mongo": "^1.3.2",
+      "cors": "^2.8.4",
+      "dotenv": "^4.0.0",
+      "express": "^4.13.3",
+      "express-session": "^1.12.1",
+      "hyperwallet-sdk": "^0.1.1",
+      "image-downloader": "^3.3.0",
+      "jsonwebtoken": "^8.1.0",
+      "link-preview": "^1.0.0",
+      "mongoose": "^4.3.3",
+      "morgan": "^1.9.0",
+      "multer": "^1.3.0",
+      "multer-s3": "^2.7.0",
+      "nodemailer": "^4.4.1",
+      "page-previewer": "^0.1.7",
+      "passport": "^0.3.2",
+      "passport-jwt": "^3.0.1",
+      "prerender-node": "^2.7.4",
+      "rand-token": "^0.4.0",
+      "request-image-size": "^2.1.0",
+      "timediff": "^1.1.1",
+      "vimeo": "^1.2.1",
+      "youtube-node": "^1.3.2"
+   },
+   "devDependencies": {
+      "babel-cli": "^6.26.0",
+      "babel-preset-es2015": "^6.24.1",
+      "chai": "^4.1.2",
+      "chai-http": "^4.0.0",
+      "mocha": "^2.3.4",
+      "nodemon": "^1.12.5"
+   }
+}
